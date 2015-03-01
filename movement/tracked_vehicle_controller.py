@@ -9,6 +9,8 @@ logger = logging.getLogger(__name__)
 
 class TrackedVehicleController:
     """
+    For steering a vehicle.
+
     First init() and then use the set() method to set the direction and the speed of the vehicle
     """
 

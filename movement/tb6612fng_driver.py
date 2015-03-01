@@ -11,6 +11,7 @@ logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_logg
 logger = logging.getLogger(__name__)
 
 
+
 # Motor Controller (TB6612FNG) logic
 #--------------------------------------------------
 # STBY - HIGH - operational mode (should be connected to VCC)
