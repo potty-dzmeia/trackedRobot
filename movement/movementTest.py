@@ -1,26 +1,30 @@
 #!/usr/bin/python
-import keyboardToMovementMap as mpr
-import trackedVehicleController as controller
+from keycodes_to_vehicle_commands import KeyCodesToVehicleCommands
+from tracked_vehicle_controller import TrackedVehicleController
+import logging
+import logging.config
+import misc_utils
 
+logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
 
 
 if __name__ == "__main__":
 
-    f = open('myfile','w')
+    # f = open('myfile','w')
 
-    trackedVehicle = controller.TrackedVehicleController()
-
+    vehicle = TrackedVehicleController()
 
     while(1):
 
         keysStatus = raw_input()
-        f.write(keysStatus+'\n') # python will convert \n to os.linesep
+        # f.write(keysStatus+'\n') # python will convert \n to os.linesep
         keysStatus = int(keysStatus)
 
+        if keysStatus == KeyCodesToVehicleCommands.KeyCodes.QUIT:
+            break
 
-        if(keysStatus == mpr.KeyboardToMovement.Keys.QUIT):
-            break;
-        movement, speed = mpr.KeyboardToMovement.calculateNewState(keysStatus)
-        trackedVehicle.setCommand(movement, speed)
+        movement, speed = KeyCodesToVehicleCommands.convertKeyCodeToCommands(keysStatus)
+        vehicle.set(movement, speed)
 
 
