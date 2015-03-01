@@ -12,7 +12,7 @@ logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_logg
 logger = logging.getLogger(__name__)
 
 UDP_PORT = 10000
-MY_ADDRESS = "192.168.0.104"
+MY_ADDRESS = "0.0.0.0"
 
 
 
