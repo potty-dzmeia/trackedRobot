@@ -3,7 +3,6 @@ import misc_utils
 import logging
 import logging.config
 
-
 logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
@@ -49,6 +48,16 @@ class TrackedVehicleController:
 
     def __del__(self):
         Tb6612fn.cleanup()
+
+
+    def stop(self):
+        """
+        Stops the vehicle using SOFT stop
+        :return:
+        """
+        Tb6612fn.softStop(Tb6612fn.Channel.LEFT)
+        Tb6612fn.softStop(Tb6612fn.Channel.RIGHT)
+        self.speed = self.LOWEST_SPEED
 
 
     def set(self, direction, speed):

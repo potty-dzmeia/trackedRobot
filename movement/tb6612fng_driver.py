@@ -4,7 +4,7 @@ import logging
 import logging.config
 from os import path
 import sys
-sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+sys.path.append(path.dirname(path.dirname(path.abspath(__file__)))) # needed for importing misc_utils
 import misc_utils
 
 logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_loggers=False)

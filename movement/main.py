@@ -24,7 +24,7 @@ if __name__ == "__main__":
         if keysStatus == KeyCodesToVehicleCommands.KeyCodes.QUIT:
             break
 
-        movement, speed = KeyCodesToVehicleCommands.convertKeyCodeToCommands(keysStatus)
+        movement, speed = KeyCodesToVehicleCommands.convert(keysStatus)
         vehicle.set(movement, speed)
 
 

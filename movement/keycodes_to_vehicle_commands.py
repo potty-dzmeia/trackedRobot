@@ -19,13 +19,13 @@ class KeyCodesToVehicleCommands:
 
 
     @classmethod
-    def convertKeyCodeToCommands(cls, keyCode):
+    def convert(cls, keyCode):
         """
         Calculates the command that must be send to the vehicle depending on the keys that are being pressed.
 
         :param keyCode: 8bit value - for the meaning of each bit see class Keys
         :type command: int
-        :return: Direction of movement and Speed (increased, decreased or no change)
+        :return: Vehicle commands: direction of movement and Speed
         """
 
 
