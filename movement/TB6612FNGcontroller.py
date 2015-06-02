@@ -71,8 +71,8 @@ def moveForward(motorName, speed):
         GPIO.output(AIN2, GPIO.LOW)
         PWM.set_duty_cycle(PWMA, speed)
     elif motorName == Channel.LEFT:
-        GPIO.output(BIN1, GPIO.LOW)
-        GPIO.output(BIN2, GPIO.HIGH)
+        GPIO.output(BIN1, GPIO.HIGH)
+        GPIO.output(BIN2, GPIO.LOW)
         PWM.set_duty_cycle(PWMB, speed)
     else:
         print("Wrong motor name: LEFT or RIGHT possible only")
@@ -85,12 +85,20 @@ def moveBackwards(motorName, speed):
         GPIO.output(AIN2, GPIO.HIGH)
         PWM.set_duty_cycle(PWMA, speed)
     elif motorName == Channel.LEFT:
-        GPIO.output(BIN1, GPIO.HIGH)
-        GPIO.output(BIN2, GPIO.LOW)
+        GPIO.output(BIN1, GPIO.LOW)
+        GPIO.output(BIN2, GPIO.HIGH)
         PWM.set_duty_cycle(PWMB, speed)
     else:
         print("Wrong motor name: LEFT or RIGHT possible only")
 
+
+def hardStop(motorName):
+    if motorName==Channel.RIGHT:
+        PWM.set_duty_cycle(PWMA)
+    elif motorName == Channel.LEFT:
+        PWM.set_duty_cycle(PWMB)
+    else:
+        print("Wrong motor name: LEFT or RIGHT possible only")
 
 
 def softStop(motorName):
