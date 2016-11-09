@@ -1,5 +1,10 @@
 from tracked_vehicle_controller import TrackedVehicleController
+import misc_utils
+import logging
+import logging.config
 
+logging.config.fileConfig(misc_utils.get_logging_config(), disable_existing_loggers=False)
+logger = logging.getLogger(__name__)
 
 class KeysStatus:
     """
@@ -25,6 +30,8 @@ class KeysStatus:
         :type command: int
         :return: Vehicle commands: direction of movement and speed
         """
+
+        logger.debug('input: keys_status={}'.format(keys_status))
 
         # Determine the speed command
         # -------------------------------
@@ -70,4 +77,5 @@ class KeysStatus:
         else:
             direction_command = TrackedVehicleController.DirectionCommands.SOFT_STOP
 
+        logger.debug('output: direction_command={} speed_command={}'.format(direction_command, speed_command))
         return direction_command, speed_command
